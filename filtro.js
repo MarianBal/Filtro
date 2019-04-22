@@ -12,22 +12,25 @@ var listado = document.getElementById("lista-de-productos")
 
 for (let i = 0; i < productos.length; i++) {
  
-  var div = document.createElement("div")
-  div.classList.add("producto")
+  var divContenedor = document.createElement('div');
+  divContenedor.classList.add('contenedorProducto');
 
-  var titulo = document.createElement("p")
-  titulo.classList.add("titulo")
-  titulo.textContent = productos[i].nombre
-  
+  var contenedorFoto = document.createElement('div');
+  contenedorFoto.classList.add('foto')
+
   var imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  div.appendChild(titulo)
-  div.appendChild(imagen)
+  contenedorFoto.appendChild(imagen)
+  divContenedor.appendChild(contenedorFoto)
 
-  listado.appendChild(div)
+  var titulo = document.createElement('div');
+  titulo.classList.add('titulo')
+  titulo.textContent = productos[i].nombre;
+
+  divContenedor.appendChild(titulo);
+  listado.appendChild(divContenedor);
 }
-
 
 var botonDeFiltro = document.querySelector("button")
 
@@ -44,21 +47,24 @@ botonDeFiltro.onclick = function() {
 
     if(busqueda === cadaProducto.tipo || busqueda === cadaProducto.color || busqueda === cadaProducto.nombre.toLowerCase()){
       
-      var div = document.createElement("div")
-      div.classList.add("producto")
+      var divContenedor = document.createElement('div');
+      divContenedor.classList.add('contenedorProducto');
 
-      var titulo = document.createElement("p")
-      titulo.classList.add("titulo")
-      titulo.textContent = cadaProducto.nombre
-      
+      var contenedorFoto = document.createElement('div');
+      contenedorFoto.classList.add('foto')
+
       var imagen = document.createElement("img");
       imagen.setAttribute('src', cadaProducto.img);
 
-      div.appendChild(titulo)
-      div.appendChild(imagen)
+      contenedorFoto.appendChild(imagen)
+      divContenedor.appendChild(contenedorFoto)
 
-      listado.appendChild(div)
+      var titulo = document.createElement('div');
+      titulo.classList.add('titulo')
+      titulo.textContent = cadaProducto.nombre;
 
+      divContenedor.appendChild(titulo);
+      listado.appendChild(divContenedor);
 
     }
   })
