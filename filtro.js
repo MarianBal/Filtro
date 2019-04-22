@@ -9,27 +9,34 @@ var productos = [
 
 var listado = document.getElementById("lista-de-productos")
 
+function filtrar(producto){
+
+  var divContenedor = document.createElement('div');
+      divContenedor.classList.add('contenedorProducto');
+
+      var contenedorFoto = document.createElement('div');
+      contenedorFoto.classList.add('foto')
+
+      var imagen = document.createElement("img");
+      imagen.setAttribute('src', producto.img);
+
+      contenedorFoto.appendChild(imagen)
+      divContenedor.appendChild(contenedorFoto)
+
+      var titulo = document.createElement('div');
+      titulo.classList.add('titulo')
+      titulo.textContent = producto.nombre;
+
+      divContenedor.appendChild(titulo);
+      listado.appendChild(divContenedor);
+
+}
+
 
 for (let i = 0; i < productos.length; i++) {
  
-  var divContenedor = document.createElement('div');
-  divContenedor.classList.add('contenedorProducto');
+  filtrar(productos[i]);
 
-  var contenedorFoto = document.createElement('div');
-  contenedorFoto.classList.add('foto')
-
-  var imagen = document.createElement("img");
-  imagen.setAttribute('src', productos[i].img);
-
-  contenedorFoto.appendChild(imagen)
-  divContenedor.appendChild(contenedorFoto)
-
-  var titulo = document.createElement('div');
-  titulo.classList.add('titulo')
-  titulo.textContent = productos[i].nombre;
-
-  divContenedor.appendChild(titulo);
-  listado.appendChild(divContenedor);
 }
 
 var botonDeFiltro = document.querySelector("button")
@@ -47,29 +54,36 @@ botonDeFiltro.onclick = function() {
 
     if(busqueda === cadaProducto.tipo || busqueda === cadaProducto.color || busqueda === cadaProducto.nombre.toLowerCase()){
       
-      var divContenedor = document.createElement('div');
-      divContenedor.classList.add('contenedorProducto');
-
-      var contenedorFoto = document.createElement('div');
-      contenedorFoto.classList.add('foto')
-
-      var imagen = document.createElement("img");
-      imagen.setAttribute('src', cadaProducto.img);
-
-      contenedorFoto.appendChild(imagen)
-      divContenedor.appendChild(contenedorFoto)
-
-      var titulo = document.createElement('div');
-      titulo.classList.add('titulo')
-      titulo.textContent = cadaProducto.nombre;
-
-      divContenedor.appendChild(titulo);
-      listado.appendChild(divContenedor);
+      filtrar(cadaProducto);
 
     }
   })
 
 }
+
+//Me aburre tener que ir con el mouse a hacer click sobre el botón.
+
+document.onkeydown = function (e){
+  if(e.keyCode === 13){
+
+    while (listado.firstChild) {
+      listado.removeChild(listado.firstChild);
+    }
+  
+    var input = document.getElementsByTagName('input');
+    var busqueda = input[0].value.toLowerCase();
+  
+    productos.map(function(cadaProducto){
+  
+      if(busqueda === cadaProducto.tipo || busqueda === cadaProducto.color || busqueda === cadaProducto.nombre.toLowerCase()){
+        
+        filtrar(cadaProducto);
+  
+      }
+    })
+  }
+}
+
 
 
 // Tarea: 
