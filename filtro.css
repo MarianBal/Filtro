@@ -106,7 +106,6 @@ button:active{
   height: 30px;
   background-color: #240041;
   font-size: 16px;
-  font-weight: bold;
   display:flex;
   justify-content: center;
   align-items: center;

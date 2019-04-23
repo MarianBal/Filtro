@@ -7,23 +7,23 @@ var productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-var listado = document.getElementById("lista-de-productos")
+const listado = document.getElementById("lista-de-productos")
 
 function filtrar(producto){
 
-  var divContenedor = document.createElement('div');
+      const divContenedor = document.createElement('div');
       divContenedor.classList.add('contenedorProducto');
 
-      var contenedorFoto = document.createElement('div');
+      const contenedorFoto = document.createElement('div');
       contenedorFoto.classList.add('foto')
 
-      var imagen = document.createElement("img");
+      const imagen = document.createElement("img");
       imagen.setAttribute('src', producto.img);
 
       contenedorFoto.appendChild(imagen)
       divContenedor.appendChild(contenedorFoto)
 
-      var titulo = document.createElement('div');
+      const titulo = document.createElement('div');
       titulo.classList.add('titulo')
       titulo.textContent = producto.nombre;
 
@@ -39,7 +39,7 @@ for (let i = 0; i < productos.length; i++) {
 
 }
 
-var botonDeFiltro = document.querySelector("button")
+const botonDeFiltro = document.querySelector("button")
 
 botonDeFiltro.onclick = function() {
 
@@ -47,8 +47,8 @@ botonDeFiltro.onclick = function() {
     listado.removeChild(listado.firstChild);
   }
 
-  var input = document.getElementsByTagName('input');
-  var busqueda = input[0].value.toLowerCase();
+  const input = document.getElementsByTagName('input');
+  const busqueda = input[0].value.toLowerCase();
 
   productos.map(function(cadaProducto){
 
@@ -70,8 +70,8 @@ document.onkeydown = function (e){
       listado.removeChild(listado.firstChild);
     }
   
-    var input = document.getElementsByTagName('input');
-    var busqueda = input[0].value.toLowerCase();
+    const input = document.getElementsByTagName('input');
+    const busqueda = input[0].value.toLowerCase();
   
     productos.map(function(cadaProducto){
   
